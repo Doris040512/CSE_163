@@ -1,85 +1,84 @@
-📊 Impact Analysis of Age and Gender on COVID-19 Mortality Rates
+Impact Analysis of Age and Gender on COVID-19 Mortality Rates
 
-This repository contains all analysis, code, datasets, and the final project report for “Impact Analysis of Age and Gender on COVID-19 Mortality Rates.”
-The project investigates how age and gender influence variation in COVID-19 mortality in the United States using CDC data.
+This repository contains the full analysis, code, and documentation for the project “Impact Analysis of Age and Gender on COVID-19 Mortality Rates.”
+The study examines how age and gender shape COVID-19 mortality patterns in the United States using publicly available CDC data.
+The analysis integrates statistical inference, data visualization, and machine learning modeling to evaluate demographic risk factors.
 
-📄 Full report: annotated-final.pdf (uploaded in this repo)
+The complete written project report is provided in: annotated-final.pdf.
 
-🔍 Research Questions
-1️⃣ Is age correlated with COVID-19 mortality?
+Overview
 
-Yes — mortality increases sharply with age.
-Age groups 65–74, 75–84, and 85+ show the highest deaths.
+Understanding how demographic factors influence COVID-19 mortality is essential for designing targeted public health interventions. This project explores:
 
-2️⃣ Are mortality rates significantly different for males vs. females?
+The strength of the relationship between age and COVID-19 mortality
 
-Although males consistently show higher raw mortality counts,
-t-tests indicate no statistically significant gender differences across all age groups (p > 0.05).
+Whether gender differences in mortality are statistically significant
 
-3️⃣ Within the highest-risk age group (85+), what factors influence mortality?
+Whether simple predictive models can capture mortality patterns within the highest-risk age group
 
-The 85+ group shows extremely high mortality and high variability.
-Machine learning models (Logistic Regression, Decision Tree, Random Forest) were trained but produced low predictive accuracy due to high variance and limited features.
+The project employs rigorous data cleaning, exploratory data analysis, hypothesis testing, and baseline machine learning models.
 
-📂 Project Structure
-.
-├── data/
-│   └── Provisional_COVID-19_Deaths_by_Sex_and_Age.csv
-├── cleaned_covid_mortality_data.csv
-├── notebook/
-│   └── covid_analysis.ipynb
-├── annotated-final.pdf
-└── README.md
+Research Questions
+1. How strongly is age associated with COVID-19 mortality?
 
-📈 Key Findings
-Age Trends
+COVID-19 mortality increases monotonically with age.
+The highest mortality counts occur in the 65–74, 75–84, and 85+ age groups.
+The 85+ age group exhibits the most pronounced risk.
 
-Mortality is extremely age-dependent.
+2. Are mortality differences between males and females statistically significant?
 
-85+ has the highest total deaths.
+Although males consistently exhibit higher raw mortality counts,
+independent two-sample t-tests show no statistically significant differences between male and female mortality within each age group (p > 0.05).
 
-Children and adolescents show extremely low mortality.
+3. Within the highest-risk age group (85+), can mortality patterns be modeled using machine learning?
 
-Gender Trends
+Baseline models (Logistic Regression, Decision Tree, Random Forest) were evaluated.
+Model accuracy remained low due to:
 
-Males have higher observed deaths in nearly every age group.
+High variance in mortality counts
 
-However, t-tests show no statistically significant difference between male and female mortality within age groups.
+Limited available features
 
-Machine Learning Results
+A large number of distinct target values
 
-Models trained on the highest-risk age group show:
+This suggests that more complex feature sets or regression-based modeling would be necessary for meaningful prediction.
 
-Accuracy ~ 8% (very low)
+Methodology
+Data Cleaning
 
-Death counts have hundreds of distinct values, making classification challenging
+Selected key variables: Sex, Age Group, COVID-19 Deaths
 
-Random Forest and Decision Tree outperform Logistic Regression but still weak overall
+Removed rows with missing demographic information
 
-🛠️ Methods
-Data Processing
+Standardized categorical encodings for age and gender
 
-Removed missing values
+Exported a cleaned dataset (cleaned_covid_mortality_data.csv)
 
-Converted categorical variables (Age Group, Sex)
+Exploratory Data Analysis
 
-Exported cleaned dataset for downstream use
+Summarized deaths across age categories
 
-Statistical Analysis
+Generated bar plots to visualize mortality trends
 
-Grouped by age and gender
+Created gender-stratified boxplots to compare distributions
 
-Descriptive statistics
+Identified high-risk demographic segments
 
-Boxplots and bar charts
+Statistical Hypothesis Testing
 
-Independent two-sample t-tests
+Performed gender comparison using two-sample t-tests within each age group
 
-95% confidence intervals for mortality rate differences
+Calculated 95% confidence intervals for mortality rates
 
-Machine Learning
+Assessed statistical significance and effect size
 
-Models used:
+Machine Learning Modeling
+
+Focused on the highest-risk age group: 85+
+
+Encoded categorical variables and created dummy features
+
+Trained and evaluated:
 
 Logistic Regression
 
@@ -87,18 +86,74 @@ Decision Tree Classifier
 
 Random Forest Classifier
 
-Evaluation metrics:
+Assessed using:
 
 Accuracy
 
-Classification Report
+Classification report
 
-Confusion Matrix
+Confusion matrix
 
-📊 Visualizations Generated
+The modeling results underscore the complexity of predicting mortality counts using limited demographic variables alone.
 
-Total COVID-19 deaths by age group
+Key Findings
+Age as a Primary Risk Factor
 
-Mortality boxplots by gender
+Age is the strongest determinant of COVID-19 mortality, with risk increasing exponentially among older adults.
 
-Mortality rate bar charts with 95% confidence intervals
+Gender Differences Are Not Statistically Significant
+
+Observed differences between male and female mortality are not significant under formal hypothesis testing.
+
+Predictive Modeling Limitations
+
+Baseline models fail to capture meaningful patterns in mortality within the oldest age group, suggesting the need for:
+
+Additional clinical or socioeconomic predictors
+
+Alternative modeling frameworks (e.g., regression, survival analysis)
+
+Project Structure
+
+.
+├── data/
+│ └── Provisional_COVID-19_Deaths_by_Sex_and_Age.csv
+├── cleaned_covid_mortality_data.csv
+├── notebook/
+│ └── covid_analysis.ipynb
+├── annotated-final.pdf
+└── README.md
+
+data/: Raw CDC dataset
+
+covid_analysis.ipynb: Full Python workflow (cleaning → EDA → tests → ML models)
+
+annotated-final.pdf: Final polished written report
+
+How to Run the Project
+1. Clone the repository
+
+git clone https://github.com/yourusername/yourrepo.git
+
+cd yourrepo
+
+2. Install required packages
+
+pip install -r requirements.txt
+
+3. Open the Jupyter Notebook
+
+jupyter notebook
+
+4. Run covid_analysis.ipynb to reproduce all results.
+Data Source
+
+United States Centers for Disease Control and Prevention (CDC)
+Provisional COVID-19 Deaths by Sex and Age (Public Dataset)
+
+Author
+
+Shuozishan (Doris) Wang
+B.S. in Applied Statistics
+University of Washington, Seattle
+
